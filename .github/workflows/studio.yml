@@ -64,13 +64,14 @@ jobs:
         run: ${{ steps.pkgman.outputs.package_manager }} add -D @nuxthq/studio
 
       - name: Create .nuxtrc
-        run: echo '\nautoImport=true\nmodules[]=@nuxthq/studio' >> .nuxtrc
+        run: echo $'\nautoImport=true\nmodules[]=@nuxthq/studio' >> .nuxtrc
 
       - name: Generate
         run: npx nuxi generate
         env:
           NUXT_PUBLIC_STUDIO_API_URL: https://api.nuxt.studio
           NUXT_PUBLIC_STUDIO_TOKENS: e1432433dec9f5d06f281e67e0488e2b058a578523e30c1c72c0fb1b8e7888f4
+
 
       - name: Add .nojekyll file
         run: touch .output/public/.nojekyll
